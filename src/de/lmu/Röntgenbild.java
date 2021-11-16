@@ -3,7 +3,7 @@ package de.lmu;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Röntgenbild implements Serializable {
+public class Röntgenbild implements RötgenbildIF {
 
     private Date aufnameVom;
     private transient String pathienenName;

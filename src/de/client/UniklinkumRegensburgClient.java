@@ -1,31 +1,33 @@
 package de.client;
 
-import de.lmu.Bericht;
-import de.lmu.FrüherkennungIF;
-import de.lmu.Röntgenbild;
+import de.lmu.*;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 public class UniklinkumRegensburgClient {
 
-    public Bericht getBericht(Röntgenbild röntenbild)
+    public BerichtIF getBericht(Röntgenbild röntenbild)
     {
         try {
             Registry r = LocateRegistry.getRegistry("localhost", 1099);
             FrüherkennungIF früherkennungIF=(FrüherkennungIF) r.lookup("Test");
-            Bericht bericht = früherkennungIF.anylysieren(röntenbild);
+
+
+            RötgenbildIF rötgenbildStub= (RötgenbildIF) UnicastRemoteObject.exportObject(röntenbild, 0);
+
+            BerichtIF bericht = früherkennungIF.anylysieren(röntenbild);
+
             return bericht;
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (NotBoundException e) {
             e.printStackTrace();
         }
-
-        return  null;
-
+        return null;
     }
 
 

@@ -1,9 +1,10 @@
 package de.lmu;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.Date;
 
-public class Bericht implements Serializable {
+public class Bericht implements  BerichtIF {
 
     private Date datum;
     private String diagnose;
@@ -19,27 +20,27 @@ public class Bericht implements Serializable {
     }
 
 
-    public Date getDatum() {
+    public Date getDatum() throws RemoteException {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(Date datum) throws RemoteException {
         this.datum = datum;
     }
 
-    public String getDiagnose() {
+    public String getDiagnose() throws RemoteException {
         return diagnose;
     }
 
-    public void setDiagnose(String diagnose) {
+    public void setDiagnose(String diagnose)   throws RemoteException{
         this.diagnose = diagnose;
     }
 
-    public String getWeiteresVorgehen() {
+    public String getWeiteresVorgehen()  throws RemoteException {
         return weiteresVorgehen;
     }
 
-    public void setWeiteresVorgehen(String weiteresVorgehen) {
+    public void setWeiteresVorgehen(String weiteresVorgehen)  throws RemoteException {
         this.weiteresVorgehen = weiteresVorgehen;
     }
 }

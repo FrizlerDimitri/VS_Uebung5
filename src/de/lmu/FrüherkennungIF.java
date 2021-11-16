@@ -5,5 +5,5 @@ import java.rmi.RemoteException;
 
 public interface FrüherkennungIF extends Remote {
 
-    Bericht anylysieren (Röntgenbild röntenbild) throws RemoteException;
+    BerichtIF anylysieren (RötgenbildIF röntenbild) throws RemoteException;
 }
